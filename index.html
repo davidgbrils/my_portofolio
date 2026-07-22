@@ -1,29 +1,82 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Gabriel | Backend Developer</title>
-    <meta name="description" content="Informatics Engineering Student & Backend Developer specializing in Python, SQL, and REST API development.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <title>David Gabriel | AI Assisted Developer & Web Developer</title>
+    <meta name="description" content="AI Assisted Developer & Web Developer specializing in responsive web apps, backend integration, Python, SQL, and AI-assisted workflows.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ðŸ’»</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
         html {
             scroll-behavior: smooth;
         }
         .hero-bg {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            position: relative;
+            background: radial-gradient(circle at 50% 10%, #f8fafc 0%, #e2e8f0 100%);
+            overflow: hidden;
+        }
+        .hero-orb-1 {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(99, 102, 241, 0.05) 70%);
+            filter: blur(60px);
+            border-radius: 50%;
+            animation: floatOrb 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        .hero-orb-2 {
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(6, 182, 212, 0.05) 70%);
+            filter: blur(70px);
+            border-radius: 50%;
+            animation: floatOrb 10s ease-in-out infinite alternate-reverse;
+            pointer-events: none;
+        }
+        .hero-grid-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(51, 65, 85, 0.12) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+        }
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -40px) scale(1.1); }
+        }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: floatCard 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floatCard 4s ease-in-out 2s infinite;
         }
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
         }
         .skill-icon {
             transition: all 0.3s ease;
         }
         .skill-icon:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -36,13 +89,13 @@
 </head>
 <body class="font-sans text-gray-800 bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm fixed w-full z-10">
-        <div class="max-w-6xl mx-auto px-4">
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <span class="text-xl font-semibold text-gray-800">David Gabriel</span>
+                    <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">David Gabriel</span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden md:flex items-center space-x-8 font-medium">
                     <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Home</a>
                     <a href="#about" class="text-gray-700 hover:text-blue-600 transition">About</a>
                     <a href="#projects" class="text-gray-700 hover:text-blue-600 transition">Projects</a>
@@ -50,7 +103,7 @@
                     <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <button id="menu-btn" class="text-gray-700 focus:outline-none p-2 rounded-lg hover:bg-gray-100">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -59,44 +112,98 @@
             </div>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">About</a>
-                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Projects</a>
-                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Skills</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t shadow-lg">
+            <div class="px-4 pt-3 pb-4 space-y-2">
+                <a href="#home" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">About</a>
+                <a href="#projects" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Projects</a>
+                <a href="#skills" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Skills</a>
+                <a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="text-center md:text-left md:flex items-center">
-                <div class="md:w-1/2 animate-fadeIn">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">David Gabriel</h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-blue-600 mb-6">Informatics Engineering Student & Backend Developer</h2>
-                    <p class="text-lg text-gray-600 mb-8 max-w-lg">
-                        "I specialize in building backend systems using Python, SQL, and REST API. I'm passionate about technology, data, and problem solving."
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20 pb-16 relative">
+        <!-- Background Orbs and Tech Grid -->
+        <div class="hero-orb-1"></div>
+        <div class="hero-orb-2"></div>
+        <div class="hero-grid-pattern"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10 w-full">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Left Content -->
+                <div class="w-full md:w-1/2 text-center md:text-left animate-fadeIn">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 border border-blue-200 text-blue-700 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                        AI Assisted Developer & Web Developer
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-tight mb-4">
+                        Hi, I'm <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">David Gabriel</span>
+                    </h1>
+
+                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mb-6">
+                        Building Modern Web Experiences with AI Support
+                    </h2>
+
+                    <p class="text-base sm:text-lg text-gray-600 mb-8 max-w-xl leading-relaxed">
+                        I build responsive web applications and supporting backend services using <strong class="text-gray-800">React</strong>, <strong class="text-gray-800">TypeScript</strong>, <strong class="text-gray-800">Python</strong>, and <strong class="text-gray-800">SQL</strong>, with AI-assisted workflows to move faster and stay consistent.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <a href="wa.me/+62895350741032" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">
-                            Contact Me
+
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="https://wa.me/+6285281132535" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5">
+                            <i class="fab fa-whatsapp text-lg"></i> Contact Me
                         </a>
-                        <a href="https://raw.githubusercontent.com/davidgbrils/my_portofolio/refs/heads/main/CV_DAVID.png" class="px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition duration-300 shadow-md">
-                            Lihat CV
+                        <a href="https://raw.githubusercontent.com/davidgbrils/ASSET/refs/heads/main/cvdavid.png" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/90 hover:bg-white text-gray-800 font-semibold rounded-xl border border-gray-300 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                            <i class="fas fa-file-lines text-blue-600 text-lg"></i> Lihat CV
                         </a>
                     </div>
                 </div>
-                <div class="hidden md:block md:w-1/2 mt-10 md:mt-0">
-                    <div class="flex justify-center">
-                        <div class="relative">
-                            <div class="w-64 h-64 bg-blue-100 rounded-full flex items-center justify-center">
-                                <i class="fas fa-server text-blue-600 text-8xl"></i>
+
+                <!-- Right Code/Terminal Card -->
+                <div class="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+                    <div class="relative w-full max-w-md sm:max-w-lg">
+                        <!-- Floating Tech Badge Top Right -->
+                        <div class="absolute -top-4 -right-2 sm:right-2 bg-white/90 backdrop-blur-md border border-gray-200/80 px-3.5 py-2 rounded-xl shadow-lg z-20 flex items-center gap-2.5 text-xs font-semibold text-gray-800 animate-float">
+                            <i class="fab fa-python text-yellow-500 text-lg"></i>
+                            <span>Python 3.11</span>
+                        </div>
+
+                        <!-- Floating Tech Badge Bottom Left -->
+                        <div class="absolute -bottom-4 -left-2 sm:left-2 bg-white/90 backdrop-blur-md border border-gray-200/80 px-3.5 py-2 rounded-xl shadow-lg z-20 flex items-center gap-2.5 text-xs font-semibold text-gray-800 animate-float-delayed">
+                            <i class="fas fa-database text-blue-600 text-lg"></i>
+                            <span>PostgreSQL & SQL</span>
+                        </div>
+
+                        <!-- Terminal Glassmorphism Window -->
+                        <div class="bg-gray-900 rounded-2xl shadow-2xl border border-gray-800 overflow-hidden text-left font-mono">
+                            <!-- Terminal Bar -->
+                            <div class="bg-gray-800/90 px-4 py-3 flex items-center justify-between border-b border-gray-700/60">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="text-xs text-gray-400 font-sans font-medium">api_service.py</span>
+                                <div class="w-12"></div>
                             </div>
-                            <div class="absolute -bottom-2 -right-2 bg-white p-4 rounded-full shadow-lg">
-                                <i class="fas fa-code text-blue-600 text-2xl"></i>
+                            <!-- Terminal Code Content -->
+                            <div class="p-5 text-xs sm:text-sm leading-relaxed overflow-x-auto text-gray-200">
+                                <div class="text-gray-500"># David Gabriel - AI Assisted Web Workflow</div>
+                                <div><span class="text-purple-400">from</span> react <span class="text-purple-400">import</span> useState</div>
+                                <div><span class="text-purple-400">from</span> copilot <span class="text-purple-400">import</span> assist</div>
+                                <br>
+                                <div>app = <span class="text-green-400">AI</span>.assistant(title=<span class="text-green-400">"David Web Studio"</span>)</div>
+                                <br>
+                                <div><span class="text-blue-400">@app.get</span>(<span class="text-green-400">"/api/v1/developer"</span>)</div>
+                                <div><span class="text-purple-400">async def</span> <span class="text-yellow-300">get_profile</span>():</div>
+                                <div class="pl-4 text-cyan-300"><span class="text-purple-400">return</span> {</div>
+                                <div class="pl-8 text-green-300">"name" <span class="text-gray-400">:</span> <span class="text-yellow-200">"David Gabriel"</span><span class="text-gray-400">,</span></div>
+                                <div class="pl-8 text-green-300">"role" <span class="text-gray-400">:</span> <span class="text-yellow-200">"AI Assisted Developer & Web Developer"</span><span class="text-gray-400">,</span></div>
+                                <div class="pl-8 text-green-300">"stack" <span class="text-gray-400">:</span> [<span class="text-yellow-200">"React"</span>, <span class="text-yellow-200">"TypeScript"</span>, <span class="text-yellow-200">"Python"</span>, <span class="text-yellow-200">"SQL"</span>]<span class="text-gray-400">,</span></div>
+                                <div class="pl-8 text-green-300">"status" <span class="text-gray-400">:</span> <span class="text-yellow-200">"Building smarter web products ðŸš€"</span></div>
+                                <div class="pl-4 text-cyan-300">}</div>
                             </div>
                         </div>
                     </div>
@@ -120,14 +227,149 @@
                 </div>
                 <div class="md:w-2/3 md:pl-12">
                     <p class="text-lg text-gray-600 mb-6">
-                        I'm an Informatics Engineering student with a strong passion for backend development and AI technology. My academic journey has equipped me with solid foundations in computer science, algorithms, and system architecture.
+                        I'm an Informatics Engineering student with a strong passion for web development and AI-assisted product building. My academic journey has equipped me with solid foundations in computer science, algorithms, and system architecture.
                     </p>
                     <p class="text-lg text-gray-600 mb-6">
-                        I actively learn and build systems focused on data efficiency and backend logic. My approach combines theoretical knowledge with practical implementation, always striving to create robust and scalable solutions.
+                        I actively learn and build systems focused on user experience, data efficiency, and practical AI-assisted workflows. My approach combines theoretical knowledge with practical implementation, always striving to create polished and scalable solutions.
                     </p>
                     <p class="text-lg text-gray-600">
-                        When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or diving into AI research papers to stay at the forefront of technological advancements.
+                        When I'm not coding, you can find me exploring new technologies, improving UI workflows, contributing to open-source projects, or learning how AI tools can accelerate real product development.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Experience & Education</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Ringkasan pengalaman organisasi, internship, freelance, perjalanan belajar, dan pencapaian yang membentuk arah karier saya.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-briefcase text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Experience</h3>
+                            <p class="text-sm text-gray-500">Organisasi, internship, freelance, atau proyek nyata</p>
+                        </div>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="border-l-2 border-blue-200 pl-4">
+                            <p class="text-sm text-blue-600 font-semibold">2025 - Sekarang</p>
+                            <h4 class="text-lg font-semibold text-gray-800">IT Support & System Information - Lab ITCC</h4>
+                            <p class="text-gray-600 mt-1">Menangani technical support infrastruktur jaringan dan sistem informasi laboratorium. Mengelola basis data sertifikasi, melakukan update dan maintenance website <strong class="text-gray-800">sitasi.itpln.ac.id</strong> sebagai web applications inti sertifikasi di ITPLN, serta mengoptimalkan alur kerja administrasi lab.</p>
+                        </div>
+                        <div class="border-l-2 border-blue-200 pl-4">
+                            <p class="text-sm text-blue-600 font-semibold">2024 - 2025</p>
+                            <h4 class="text-lg font-semibold text-gray-800">Assistant Lab - ITCC (Information Technology Certification Center)</h4>
+                            <p class="text-gray-600 mt-1">Mendukung operasional laboratorium sertifikasi melalui pengelolaan sistem informasi, perawatan perangkat keras dan perangkat lunak, serta dokumentasi teknis untuk kebutuhan akademik dan sertifikasi.</p>
+                        </div>
+                        <div class="border-l-2 border-blue-200 pl-4">
+                            <p class="text-sm text-blue-600 font-semibold">2024 - 2025</p>
+                            <h4 class="text-lg font-semibold text-gray-800">Machine Learning & Web Developer - BPJS Ketenagakerjaan Jakarta Barat</h4>
+                            <p class="text-gray-600 mt-1">Berkontribusi dalam pengembangan model machine learning untuk proyek skripsi dan membangun web applications untuk BPJS Ketenagakerjaan Jakarta Barat, meliputi integrasi data, pemrosesan backend, serta implementasi fitur berbasis web yang mendukung kebutuhan operasional.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Education Timeline</h3>
+                            <p class="text-sm text-gray-500">Perjalanan pendidikan dan belajar mandiri</p>
+                        </div>
+                    </div>
+                    <div class="space-y-5">
+                        <div class="border-l-2 border-green-200 pl-4">
+                            <p class="text-sm text-green-600 font-semibold">2023 - Sekarang</p>
+                            <h4 class="text-lg font-semibold text-gray-800">Informatics Engineering Student</h4>
+                            <p class="text-gray-600 mt-1">Fokus pada web development, basis data, algoritma, dan pengembangan aplikasi yang terstruktur.</p>
+                        </div>
+                        <div class="border-l-2 border-green-200 pl-4">
+                            <p class="text-sm text-green-600 font-semibold">Self-learning</p>
+                            <h4 class="text-lg font-semibold text-gray-800">FastAPI, PostgreSQL, Docker, Kotlin, AI Tools</h4>
+                            <p class="text-gray-600 mt-1">Membangun kebiasaan belajar lewat proyek nyata, dokumentasi resmi, tutorial, dan eksperimen mandiri.</p>
+                        </div>
+                        <div class="border-l-2 border-green-200 pl-4">
+                            <p class="text-sm text-green-600 font-semibold">Next Goal</p>
+                            <h4 class="text-lg font-semibold text-gray-800">Production-ready web products</h4>
+                            <p class="text-gray-600 mt-1">Menargetkan workflow yang lebih matang: testing, deployment, accessibility, AI assistance, dan dokumentasi yang rapi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Achievements</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Pencapaian dan partisipasi dalam kompetisi teknologi yang relevan dengan pengembangan diri.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                    <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-trophy text-amber-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">BPJS Healthathon 2025</h3>
+                    <p class="text-gray-600">Berpartisipasi dalam kompetisi hackathon skala nasional oleh BPJS Kesehatan dengan lebih dari 2.800 peserta, berkompetisi di kategori Artificial Intelligence untuk mengembangkan solusi inovatif berbasis teknologi kesehatan.</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fab fa-github text-indigo-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Open Source Projects</h3>
+                    <p class="text-gray-600">Kontribusi aktif pada proyek open-source melalui GitHub, termasuk proyek machine learning, automasi, dan web applications yang mendukung kebutuhan operasional.</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-award text-emerald-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Certifications</h3>
+                    <p class="text-gray-600">Mendapatkan sertifikasi profesional di bidang teknologi informasi termasuk Microsoft Azure AI-900, Microsoft Office Specialist, dan MTCNA (MikroTik Certified Network Associate).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Certificates</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Sertifikat yang paling relevan untuk mendukung profil teknis dan produktivitas Anda.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                    <i class="fas fa-file-alt text-blue-600 text-2xl mb-4"></i>
+                    <h3 class="font-semibold text-gray-800">Microsoft Office Specialist</h3>
+                    <p class="text-sm text-gray-600 mt-1">Microsoft Office certification untuk mendukung produktivitas dan pengolahan dokumen.</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                    <i class="fas fa-brain text-cyan-600 text-2xl mb-4"></i>
+                    <h3 class="font-semibold text-gray-800">Microsoft Azure AI-900</h3>
+                    <p class="text-sm text-gray-600 mt-1">Fundamental AI concepts, machine learning, dan layanan AI di Microsoft Azure.</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                    <i class="fas fa-network-wired text-emerald-600 text-2xl mb-4"></i>
+                    <h3 class="font-semibold text-gray-800">MTCNA</h3>
+                    <p class="text-sm text-gray-600 mt-1">MikroTik Certified Network Associate untuk dasar networking dan administrasi jaringan.</p>
                 </div>
             </div>
         </div>
@@ -156,11 +398,17 @@
                         <div class="mb-4">
                             <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2 mb-2">Python</span>
                             <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2 mb-2">PYQT</span>
-                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded mr-2 mb-2">SQLLite</span>
+                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded mr-2 mb-2">SQLite</span>
+                            <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded mr-2 mb-2">GUI</span>
                         </div>
-                        <a href="https://github.com/davidgbrils/inventory_gui.git" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            View on GitHub <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                        </a>
+                        <div class="space-y-2">
+                            <a href="https://github.com/davidgbrils/inventory_gui.git" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View on GitHub <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                            <a href="https://github.com/davidgbrils/inventory_gui" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                Project Repository <i class="fas fa-book ml-2 text-sm"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -179,14 +427,109 @@
                         <div class="mb-4">
                             <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2 mb-2">Python</span>
                             <span class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded mr-2 mb-2">Tkinter</span>
+                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2 mb-2">Telegram API</span>
                         </div>
-                        <a href="https://github.com/davidgbrils/qrcodegenerator.git" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                            View on GitHub <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                        </a>
+                        <div class="space-y-2">
+                            <a href="https://github.com/davidgbrils/qrcodegenerator.git" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View on GitHub <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                            <a href="https://github.com/davidgbrils/qrcodegenerator/blob/main/README.md" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                Documentation / README <i class="fas fa-book ml-2 text-sm"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-              
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-brain text-purple-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">MindGuard AI</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Aplikasi pemantauan risiko kesehatan mental harian berbasis input pengguna & sinyal sensor perangkat dengan rekomendasi intervensi AI.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-cyan-100 text-cyan-800 text-xs px-2 py-1 rounded mr-2 mb-2">Flutter</span>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2 mb-2">Dart</span>
+                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded mr-2 mb-2">AI / ML</span>
+                            <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded mr-2 mb-2">Sensors</span>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="https://github.com/davidgbrils/mindguardai.git" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View on GitHub <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                            <a href="https://github.com/davidgbrils/mindguardai/blob/main/README.md" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                Documentation / README <i class="fas fa-book ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-boxes-stacked text-amber-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">Miman Stock</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Aplikasi mobile Android untuk manajemen dan pencatatan stok barang secara terstruktur, cepat, dan efisien.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2 mb-2">Android</span>
+                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded mr-2 mb-2">Kotlin</span>
+                            <span class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded mr-2 mb-2">Gradle</span>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2 mb-2">Firebase</span>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="https://github.com/davidgbrils/Miman_Stock.git" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View on GitHub <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                            <a href="https://github.com/davidgbrils/Miman_Stock/blob/main/README.md" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                Documentation / README <i class="fas fa-book ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-building text-cyan-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-800">SISMON MAGANG PLN ICON+</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Sistem monitoring magang yang dikembangkan saat internship di PLN ICON+ untuk absensi QR, log kerja harian, dashboard analitik, penilaian performa, dan rekapitulasi data.
+                        </p>
+                        <div class="mb-4">
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mr-2 mb-2">React</span>
+                            <span class="inline-block bg-cyan-100 text-cyan-800 text-xs px-2 py-1 rounded mr-2 mb-2">TypeScript</span>
+                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2 mb-2">Node.js</span>
+                            <span class="inline-block bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded mr-2 mb-2">Express.js</span>
+                            <span class="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded mr-2 mb-2">MongoDB</span>
+                            <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded mr-2 mb-2">JWT</span>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="https://github.com/Arifkyyy/sismon_magang.git" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View on GitHub <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                            <a href="https://github.com/Arifkyyy/sismon_magang/blob/main/readme.md" class="text-gray-600 hover:text-gray-800 font-medium flex items-center">
+                                Documentation / README <i class="fas fa-book ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Skills Section -->
@@ -197,30 +540,66 @@
                 <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Backend Skills -->
+                <!-- Web Development Skills -->
                 <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
                     <div class="flex items-center mb-4">
                         <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-server text-blue-600"></i>
+                            <i class="fas fa-laptop-code text-blue-600"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800">Backend</h3>
+                        <h3 class="text-xl font-semibold text-gray-800">Web Development</h3>
                     </div>
                     <ul class="space-y-3">
                         <li class="flex items-center">
-                            <i class="fab fa-python text-blue-600 mr-3 skill-icon"></i>
+                            <i class="fab fa-html5 text-blue-600 mr-3 skill-icon"></i>
+                            <span>HTML5</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-css3-alt text-blue-600 mr-3 skill-icon"></i>
+                            <span>CSS3 / Tailwind CSS</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-js text-blue-600 mr-3 skill-icon"></i>
+                            <span>JavaScript / TypeScript</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-react text-blue-600 mr-3 skill-icon"></i>
+                            <span>React</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-mobile-alt text-blue-600 mr-3 skill-icon"></i>
+                            <span>Responsive UI</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Backend & Database -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-database text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Backend & Database</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fab fa-python text-indigo-600 mr-3 skill-icon"></i>
                             <span>Python</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-database text-blue-600 mr-3 skill-icon"></i>
+                            <i class="fas fa-bolt text-indigo-600 mr-3 skill-icon"></i>
+                            <span>FastAPI / Flask</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-database text-indigo-600 mr-3 skill-icon"></i>
                             <span>SQL (PostgreSQL, MySQL)</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-code text-blue-600 mr-3 skill-icon"></i>
+                            <i class="fas fa-code text-indigo-600 mr-3 skill-icon"></i>
                             <span>REST API Development</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-network-wired text-blue-600 mr-3 skill-icon"></i>
-                            <span>Microservices Architecture</span>
+                            <i class="fab fa-docker text-indigo-600 mr-3 skill-icon"></i>
+                            <span>Docker Basics</span>
                         </li>
                     </ul>
                 </div>
@@ -247,8 +626,40 @@
                             <span>VS Code</span>
                         </li>
                         <li class="flex items-center">
+                            <i class="fab fa-github text-green-600 mr-3 skill-icon"></i>
+                            <span>Git & GitHub</span>
+                        </li>
+                        <li class="flex items-center">
                             <i class="fab fa-docker text-green-600 mr-3 skill-icon"></i>
                             <span>Docker</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Database & Cloud -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-cloud text-cyan-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Database & Cloud</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-database text-cyan-600 mr-3 skill-icon"></i>
+                            <span>PostgreSQL</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-fire text-cyan-600 mr-3 skill-icon"></i>
+                            <span>Firebase</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-server text-cyan-600 mr-3 skill-icon"></i>
+                            <span>Deployment Basics</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-vial text-cyan-600 mr-3 skill-icon"></i>
+                            <span>Testing Fundamentals</span>
                         </li>
                     </ul>
                 </div>
@@ -287,7 +698,7 @@
                         <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-robot text-yellow-600"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-800">AI & Automation</h3>
+                        <h3 class="text-xl font-semibold text-gray-800">AI-Assisted Development</h3>
                     </div>
                     <ul class="space-y-3">
                         <li class="flex items-center">
@@ -312,6 +723,31 @@
         </div>
     </section>
 
+    <!-- Learning Now Section -->
+    <section id="learning" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">What I'm Learning Now</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Bagian ini membuat portofolio terasa hidup karena menunjukkan fokus belajar Anda saat ini.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Smart Web Workflow</h3>
+                    <p class="text-gray-600">Belajar cara menggabungkan AI tools ke proses build web, termasuk ideasi, copywriting, debugging, dan review kode.</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Modern Frontend</h3>
+                    <p class="text-gray-600">Memperdalam komponen reusable, design system, animasi, dan UI yang cepat dipahami pengguna.</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Backend Integration</h3>
+                    <p class="text-gray-600">Mengeksplorasi API integration, database design, dan deployment agar aplikasi web lebih siap dipakai.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -321,7 +757,7 @@
             </div>
             <div class="flex flex-col md:flex-row gap-12">
                 <div class="md:w-1/2">
-                    <form class="space-y-6">
+                    <form id="contact-form" class="space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
                             <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Your name">
@@ -335,7 +771,7 @@
                             <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Your message"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">
-                            Send Message
+                            Send Email
                         </button>
                     </form>
                 </div>
@@ -383,7 +819,7 @@
                         <div class="mt-8">
                             <h4 class="text-lg font-medium text-gray-800 mb-4">Let's Connect</h4>
                             <div class="flex space-x-4">
-                                <a href="github.com/davidgbrils" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                                <a href="https://github.com/davidgbrils" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-100 transition">
                                     <i class="fab fa-github text-gray-700 hover:text-gray-900"></i>
                                 </a>
                                 <a href="https://www.linkedin.com/in/david-gabriel-6aa6a5245/" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-100 transition">
@@ -406,17 +842,18 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
                     <span class="text-xl font-semibold">David Gabriel</span>
-                    <p class="text-gray-400 mt-1">Informatics Engineering Student & Backend Developer</p>
+                    <p class="text-gray-400 mt-1">Informatics Engineering Student & AI Assisted Web Developer</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
                     <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a>
                     <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
                     <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
-                <p>&copy; 2023 David Gabriel. All rights reserved.</p>
+                <p>&copy; 2026 David Gabriel. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -425,7 +862,7 @@
         // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        
+
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
@@ -439,18 +876,25 @@
         });
 
         // Form submission (just for demo)
-        const contactForm = document.querySelector('form');
+        const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                alert('Thank you for your message! This is a demo form and no data will be saved.');
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                const subject = encodeURIComponent(`Portfolio message from ${name || 'Visitor'}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+                window.location.href = `mailto:dvdgbriel1@gmail.com?subject=${subject}&body=${body}`;
                 contactForm.reset();
             });
         }
 
         // Scroll animation for sections
         const sections = document.querySelectorAll('section');
-        
+
         const observerOptions = {
             threshold: 0.1
         };
